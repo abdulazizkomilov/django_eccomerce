@@ -209,7 +209,7 @@
               <div class="view overlay">
                 <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/12.jpg" class="card-img-top"
                   alt="">
-                <a>
+                <a href="{{ item.get_absolute_url }}">
                   <div class="mask rgba-white-slight"></div>
                 </a>
               </div>
@@ -230,7 +230,13 @@
                 </h5>
 
                 <h4 class="font-weight-bold blue-text">
-                  <strong>${{ item.price }}</strong>
+                  <strong>$
+                    {% if item.discount_price %}
+                    {{ item.discount_price }}
+                    {% else %}
+                    {{ item.price }}
+                    {% endif %}
+                  </strong>
                 </h4>
 
               </div>
