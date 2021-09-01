@@ -492,7 +492,7 @@ class DefaultAccountAdapter(object):
                 if len(
                     login_data
                 ) >= app_settings.LOGIN_ATTEMPTS_LIMIT and current_attempt_time < (
-                    login_data[-1] + app_settings.LOGIN_ATTEMPTS_TIMEOUT
+                        login_data[-1] + app_settings.LOGIN_ATTEMPTS_TIMEOUT
                 ):
                     raise forms.ValidationError(
                         self.error_messages["too_many_login_attempts"]

@@ -128,6 +128,28 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'accounts.CustomUser'
 
+# email backend
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# DEFAULT_FROM_EMAIL = 'admin@kings.dev'
+# EMAIL_HOST = 'smtp.kingsdev'
+# EMAIL_HOST_USER = 'username'
+# EMAIL_HOST_PASSWORD = 'password'
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
+
+
+# login or logout
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
+
+
+# media
+MEDIA_URL = '/media/'
+MEDIA_ROOT = str(BASE_DIR.joinpath('media'))
+
+
 # auth
 AUTHENTICATION_BACKENDS = [
 
@@ -139,8 +161,6 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 SITE_ID = 1
-
-LOGIN_REDIRECT_URL = '/'
 
 # crispy_forms_tags
 CRISPY_TEMPLATE_PACK = 'bootstrap4'

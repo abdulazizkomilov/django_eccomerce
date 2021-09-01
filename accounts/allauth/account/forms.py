@@ -125,8 +125,8 @@ class LoginForm(forms.Form):
             )
         else:
             assert (
-                app_settings.AUTHENTICATION_METHOD
-                == AuthenticationMethod.USERNAME_EMAIL
+                    app_settings.AUTHENTICATION_METHOD
+                    == AuthenticationMethod.USERNAME_EMAIL
             )
             login_widget = forms.TextInput(
                 attrs={"placeholder": _("Username or e-mail"), "autocomplete": "email"}
