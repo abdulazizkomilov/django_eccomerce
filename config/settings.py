@@ -34,7 +34,6 @@ INSTALLED_APPS = [
     'crispy_forms',
     # local
     'core',
-    'accounts',
 ]
 
 MIDDLEWARE = [
@@ -126,10 +125,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media_root')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-AUTH_USER_MODEL = 'accounts.CustomUser'
 
 # email backend
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 # DEFAULT_FROM_EMAIL = 'admin@kings.dev'
@@ -142,12 +140,11 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # login or logout
 LOGIN_REDIRECT_URL = '/'
-LOGOUT_REDIRECT_URL = '/'
 
 
 # media
-MEDIA_URL = '/media/'
-MEDIA_ROOT = str(BASE_DIR.joinpath('media'))
+# MEDIA_URL = '/media/'
+# MEDIA_ROOT = str(BASE_DIR.joinpath('media'))
 
 
 # auth
