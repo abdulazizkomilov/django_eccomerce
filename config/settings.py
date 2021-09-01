@@ -31,9 +31,10 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-
+    'crispy_forms',
     # local
     'core',
+    'accounts',
 ]
 
 MIDDLEWARE = [
@@ -125,6 +126,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media_root')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+AUTH_USER_MODEL = 'accounts.CustomUser'
+
 # auth
 AUTHENTICATION_BACKENDS = [
 
@@ -136,3 +139,8 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 SITE_ID = 1
+
+LOGIN_REDIRECT_URL = '/'
+
+# crispy_forms_tags
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
