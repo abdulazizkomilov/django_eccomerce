@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
+{% load widget_tweaks %}
 
 {% block title %}Checkout{% endblock %}
 
@@ -28,14 +29,14 @@
               <!--address-->
               <div class="md-form mb-5">
 <!--                <input type="text" id="address" class="form-control" placeholder="1234 Main St">-->
-                {{ form.street_address }}
+                {{ form.street_address|attr:"type:text"|attr:"class:form-control"|attr:"placeholder:1234 Main St" }}
                 <label class="">Address</label>
               </div>
 
               <!--address-2-->
               <div class="md-form mb-5">
 <!--                <input type="text" id="address-2" class="form-control" placeholder="Apartment or suite">-->
-                {{ form.apartment_adddress }}
+                {{ form.apartment_adddress|attr:"type:text"|attr:"class:form-control"|attr:"placeholder:Apartment or suite" }}
                 <label class="">Address 2 (optional)</label>
               </div>
 
@@ -62,8 +63,8 @@
 
                 <!--Grid column-->
                 <div class="col-lg-4 col-md-6 mb-4">
-                  <label>State</label>
-                  {{ form.region }}
+                  <label>Region</label>
+                  {{ form.region|add_class:"custom-select d-block w-100" }}
 <!--                  <select class="custom-select d-block w-100" id="state" required>-->
 <!--                    <option value="">Choose...</option>-->
 <!--                    <option>California</option>-->
@@ -84,7 +85,7 @@
 
                   <label>Zip</label>
 <!--                  <input type="text" class="form-control" id="zip" placeholder="" required>-->
-                  {{ form.zip }}
+                  {{ form.zip|attr:"placeholder:012345" }}
                   <div class="invalid-feedback">
                     Zip code required.
                   </div>
@@ -95,18 +96,18 @@
               </div>
               <!--Grid row-->
 
-<!--              <hr>-->
+              <hr>
 
-<!--              <div class="custom-control custom-checkbox">-->
-<!--                <input {% if form.same_billing_address.value %}checked{% endif %} type="checkbox" class="custom-control-input">-->
-<!--&lt;!&ndash;                {{ form.same_billing_address }}&ndash;&gt;-->
-<!--                <label class="custom-control-label">Shipping address is the same as my billing address</label>-->
-<!--              </div>-->
-<!--              <div class="custom-control custom-checkbox">-->
-<!--                <input {% if form.save_info.value %}checked{% endif %} type="checkbox" class="custom-control-input">-->
-<!--&lt;!&ndash;                {{ form.save_info }}&ndash;&gt;-->
-<!--                <label class="custom-control-label">Save this information for next time</label>-->
-<!--              </div>-->
+              <div>
+                <input {% if form.same_billing_address.value %}checked{% endif %} type="checkbox">
+<!--                {{ form.same_billing_address|attr:"type:input"|attr:"class:custom-control-input" }}-->
+                <label class="">Shipping address is the same as my billing address</label>
+              </div>
+              <div>
+                <input {% if form.save_info.value %}checked{% endif %} type="checkbox">
+<!--                {{ form.save_info|attr:"type:input"|attr:"class:custom-control-input" }}-->
+                <label class="">Save this information for next time</label>
+              </div>
 
               <hr>
 
