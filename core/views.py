@@ -32,17 +32,18 @@ class CheckoutView(View):
                 apartment_adddress = form.cleaned_data.get('apartment_adddress')
                 street_address = form.cleaned_data.get('street_address')
                 country = form.cleaned_data.get('country')
+                # region = form.cleaned_data.get('1 or 2 or 3 or 4 or 5 or 6 or 7 or 8 or 9 or 10 or 11 or 12')
                 zip = form.cleaned_data.get('zip')
                 # TODO: add functionality for these fields
-                # same_billing_address = form.cleaned_data.get('same_billing_address')
+                # same_shipping_address = form.cleaned_data.get('same_shipping_address')
                 # save_info = form.cleaned_data.get('save_info')
                 # payment_option = form.cleaned_data.get('payment_option')
                 billing_address = BillingAddress(
                     user=self.request.user,
                     street_address=street_address,
                     apartment_adddress=apartment_adddress,
-                    countries=country,
-                    region=self.region,
+                    country=country,
+                    # region=region,
                     zip=zip,
                 )
                 billing_address.save()

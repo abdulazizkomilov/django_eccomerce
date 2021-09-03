@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'django_countries',
     'widget_tweaks',
+
     # local
     'core',
 ]
