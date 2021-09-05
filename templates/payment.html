@@ -27,6 +27,11 @@
                 {{ form|crispy }}
                 <button class="btn btn-primary" type="submit">Submit</button>
             </form>
+              <form method="POST" class="card-body">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <button class="btn btn-primary" type="submit">Submit</button>
+            </form>
 
           </div>
           <!--/.Card-->
