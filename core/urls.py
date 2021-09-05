@@ -4,6 +4,7 @@ from .views import (
     ItemDetailView, add_to_card,
     remove_from_cart, OrderSummaryView,
     remove_single_item_from_cart,
+    PaymentView,
 )
 
 app_name = 'core'
@@ -15,5 +16,7 @@ urlpatterns = [
     path('order-summary/', OrderSummaryView.as_view(), name='order-summary'),
     path('add-to-card/<slug>', add_to_card, name='add-to-card'),
     path('remove-from-card/<slug>', remove_from_cart, name='remove_from_cart'),
-    path('remove-item-from-cart/<slug>', remove_single_item_from_cart, name='remove-single-item-from-cart'),
+    path('remove-item-from-cart/<slug>', remove_single_item_from_cart,
+         name='remove-single-item-from-cart'),
+    path('payment/<payment_option>/', PaymentView.as_view(), name='payment'),
 ]
