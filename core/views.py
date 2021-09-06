@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.contrib import messages
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.decorators import login_required
@@ -8,6 +9,10 @@ from .models import Item, OrderItem, Order, BillingAddress
 from django.shortcuts import redirect
 from .forms import CheckoutForm
 from django.utils import timezone
+
+import stripe
+stripe.api_key = "sk_test_4eC39HqLyjWDarjtT1zdp7dc"
+
 
 
 def product(request):
@@ -61,6 +66,17 @@ class CheckoutView(View):
 class PaymentView(View):
     def get(self, *args, **kwargs):
         return render(self.request, "payment.html")
+
+    def post(self, *args, **kwargs):
+        order = Order.objects.get(user=self.request.user, ordered=False)
+        token = self.request.POST.get('stripeToken')
+        stripe.Charge.create(
+            amount=order.get_total() * 100,
+            currency="usd",
+            source=token,
+        )
+
+        order.ordered = True
 
 class HomeView(ListView):
     model = Item
