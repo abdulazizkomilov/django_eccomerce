@@ -81,22 +81,22 @@ class PaymentView(View):
             context = {
                 'order': order,
                 'DISPLAY_COUPON_FORM': False,
-                'STRIPE_PUBLIC_KEY' : settings.STRIPE_PUBLIC_KEY
+                'STRIPE_PUBLIC_KEY' : "sk_test_4eC39HqLyjWDarjtT1zdp7dc"
             }
-            userprofile = self.request.user.userprofile
-            if userprofile.one_click_purchasing:
-                # fetch the users card list
-                cards = stripe.Customer.list_sources(
-                    userprofile.stripe_customer_id,
-                    limit=3,
-                    object='card'
-                )
-                card_list = cards['data']
-                if len(card_list) > 0:
-                    # update the context with the default card
-                    context.update({
-                        'card': card_list[0]
-                    })
+            # userprofile = self.request.user.userprofile
+            # if userprofile.one_click_purchasing:
+            #     # fetch the users card list
+            #     cards = stripe.Customer.list_sources(
+            #         userprofile.stripe_customer_id,
+            #         limit=3,
+            #         object='card'
+            #     )
+            #     card_list = cards['data']
+            #     if len(card_list) > 0:
+            #         # update the context with the default card
+            #         context.update({
+            #             'card': card_list[0]
+            #         })
             return render(self.request, "payment.html", context)
         else:
             messages.warning(
