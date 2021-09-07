@@ -13,8 +13,7 @@ from django.utils import timezone
 from django.views.generic import ListView, DetailView, View
 
 from .forms import CheckoutForm, CouponForm, RefundForm, PaymentForm
-from .models import Item, OrderItem, Order, BillingAddress, Payment, Coupon, Refund, UserProfile
-
+from .models import Item, OrderItem, Order, Address, Payment, Coupon, Refund, UserProfile
 
 stripe.api_key = "sk_test_4eC39HqLyjWDarjtT1zdp7dc"
 
@@ -50,7 +49,7 @@ class CheckoutView(View):
                 'DISPLAY_COUPON_FORM': True
             }
 
-            shipping_address_qs = BillingAddress.objects.filter(
+            shipping_address_qs = Address.objects.filter(
                 user=self.request.user,
                 address_type='S',
                 default=True
@@ -59,7 +58,7 @@ class CheckoutView(View):
                 context.update(
                     {'default_shipping_address': shipping_address_qs[0]})
 
-            billing_address_qs = BillingAddress.objects.filter(
+            billing_address_qs = Address.objects.filter(
                 user=self.request.user,
                 address_type='B',
                 default=True
@@ -82,7 +81,7 @@ class CheckoutView(View):
                     'use_default_shipping')
                 if use_default_shipping:
                     print("Using the defualt shipping address")
-                    address_qs = BillingAddress.objects.filter(
+                    address_qs = Address.objects.filter(
                         user=self.request.user,
                         address_type='S',
                         default=True
@@ -106,7 +105,7 @@ class CheckoutView(View):
                     shipping_zip = form.cleaned_data.get('shipping_zip')
 
                     if is_valid_form([shipping_address1, shipping_country, shipping_zip]):
-                        shipping_address = BillingAddress(
+                        shipping_address = Address(
                             user=self.request.user,
                             street_address=shipping_address1,
                             apartment_address=shipping_address2,
@@ -145,7 +144,7 @@ class CheckoutView(View):
 
                 elif use_default_billing:
                     print("Using the defualt billing address")
-                    address_qs = BillingAddress.objects.filter(
+                    address_qs = Address.objects.filter(
                         user=self.request.user,
                         address_type='B',
                         default=True
@@ -169,7 +168,7 @@ class CheckoutView(View):
                     billing_zip = form.cleaned_data.get('billing_zip')
 
                     if is_valid_form([billing_address1, billing_country, billing_zip]):
-                        billing_address = BillingAddress(
+                        billing_address = Address(
                             user=self.request.user,
                             street_address=billing_address1,
                             apartment_address=billing_address2,

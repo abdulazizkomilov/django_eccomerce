@@ -1,9 +1,10 @@
-from django.forms import ChoiceField
 from django.db.models.signals import post_save
 from django.conf import settings
 from django.db import models
+from django.db.models import Sum
 from django.shortcuts import reverse
 from django_countries.fields import CountryField
+
 
 CATEGORY_CHOICES = (
     ('S', 'Shirt'),
@@ -32,6 +33,7 @@ class UserProfile(models.Model):
     def __str__(self):
         return self.user.username
 
+
 class Item(models.Model):
     title = models.CharField(max_length=100)
     price = models.FloatField()
@@ -40,7 +42,6 @@ class Item(models.Model):
     label = models.CharField(choices=LABEL_CHOICES, max_length=1)
     slug = models.SlugField()
     description = models.TextField()
-    quantity = models.IntegerField(default=1)
     image = models.ImageField()
 
     def __str__(self):
@@ -51,13 +52,13 @@ class Item(models.Model):
             'slug': self.slug
         })
 
-    def get_add_to_card_url(self):
-        return reverse("core:add-to-card", kwargs={
+    def get_add_to_cart_url(self):
+        return reverse("core:add-to-cart", kwargs={
             'slug': self.slug
         })
 
     def get_remove_from_cart_url(self):
-        return reverse("core:remove_from_cart", kwargs={
+        return reverse("core:remove-from-cart", kwargs={
             'slug': self.slug
         })
 
@@ -96,9 +97,9 @@ class Order(models.Model):
     ordered_date = models.DateTimeField()
     ordered = models.BooleanField(default=False)
     shipping_address = models.ForeignKey(
-        'BillingAddress', related_name='shipping_address', on_delete=models.SET_NULL, blank=True, null=True)
+        'Address', related_name='shipping_address', on_delete=models.SET_NULL, blank=True, null=True)
     billing_address = models.ForeignKey(
-        'BillingAddress', related_name='billing_address', on_delete=models.SET_NULL, blank=True, null=True)
+        'Address', related_name='billing_address', on_delete=models.SET_NULL, blank=True, null=True)
     payment = models.ForeignKey(
         'Payment', on_delete=models.SET_NULL, blank=True, null=True)
     coupon = models.ForeignKey(
@@ -107,6 +108,17 @@ class Order(models.Model):
     received = models.BooleanField(default=False)
     refund_requested = models.BooleanField(default=False)
     refund_granted = models.BooleanField(default=False)
+
+    '''
+    1. Item added to cart
+    2. Adding a billing address
+    (Failed checkout)
+    3. Payment
+    (Preprocessing, processing, packaging etc.)
+    4. Being delivered
+    5. Received
+    6. Refunds
+    '''
 
     def __str__(self):
         return self.user.username
@@ -120,21 +132,21 @@ class Order(models.Model):
         return total
 
 
-
-class BillingAddress(models.Model):
+class Address(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL,
                              on_delete=models.CASCADE)
     street_address = models.CharField(max_length=100)
-    apartment_adddress = models.CharField(max_length=100)
+    apartment_address = models.CharField(max_length=100)
     country = CountryField(multiple=False)
-    region = ChoiceField()
     zip = models.CharField(max_length=100)
+    address_type = models.CharField(max_length=1, choices=ADDRESS_CHOICES)
+    default = models.BooleanField(default=False)
 
     def __str__(self):
         return self.user.username
 
     class Meta:
-        verbose_name_plural = 'BillingAddress'
+        verbose_name_plural = 'Addresses'
 
 
 class Payment(models.Model):

@@ -8,22 +8,6 @@ PAYMENT_CHOICES = (
     ('P', 'PayPal')
 )
 
-CHOICE_LIST = [
-    ('', 'Choose...'),
-    (1, 'Andijan'),
-    (2, 'Buxoro'),
-    (3, 'Fargana'),
-    (4, 'Jizzax'),
-    (5, 'Namangan'),
-    (6, 'Navoiy'),
-    (7, 'Qashqadaryo'),
-    (8, 'Qoraqalpagistan'),
-    (9, 'Samarkand'),
-    (10, 'Sirdaryo'),
-    (11, 'Surxandaryo'),
-    (12, 'Tashkent'),
-]
-
 
 class CheckoutForm(forms.Form):
     shipping_address = forms.CharField(required=False)
@@ -33,7 +17,6 @@ class CheckoutForm(forms.Form):
         widget=CountrySelectWidget(attrs={
             'class': 'custom-select d-block w-100',
         }))
-    region = forms.ChoiceField(choices=CHOICE_LIST, required=False)
     shipping_zip = forms.CharField(required=False)
 
     billing_address = forms.CharField(required=False)
