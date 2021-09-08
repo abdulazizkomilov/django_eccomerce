@@ -62,12 +62,10 @@
             <div class="card">
 
               <div class="view overlay">
-                {% if item_image %}
                 <img src="{{ item.image.url }}" class="card-img-top">
                 <a href="{{ item.get_absolute_url }}">
                   <div class="mask rgba-white-slight"></div>
                 </a>
-                {% endif %}
               </div>
 
               <div class="card-body text-center">
