@@ -14,7 +14,7 @@
   display: block;
 }
 
-#stripeBt {
+#stripeBtn {
   border: none;
   border-radius: 4px;
   outline: none;
@@ -48,12 +48,6 @@ button:hover {
 }
 
 #card-errors {
-  height: 20px;
-  padding: 4px 0;
-  color: #fa755a;
-}
-
-#card-error {
   height: 20px;
   padding: 4px 0;
   color: #fa755a;
@@ -122,7 +116,7 @@ button:hover {
                 <div class="custom-control custom-checkbox">
                   <input type="checkbox" class="custom-control-input" name="use_default_card" id="use_default_card">
                   <label class="custom-control-label" for="use_default_card">Use default card:
-                    **** **** **** {{ card.last4 }} 
+                    **** **** **** {{ card.last4 }}
                   <span>Exp: {{ card.exp_month }}/{{ card.exp_year }}</span></label>
                 </div>
               </div>
@@ -133,7 +127,7 @@ button:hover {
                   {% csrf_token %}
                   <input type="hidden" name="use_default" value="true">
                   <div class="stripe-form-row">
-                    <button id="stripeBt">Submit Payment</button>
+                    <button id="stripeBtn">Submit Payment</button>
                   </div>
                   <div id="card-errors" role="alert"></div>
               </form>
@@ -157,7 +151,7 @@ button:hover {
                       <label class="custom-control-label" for="save_card_info">Save for future purchases</label>
                     </div>
                   </div>
-                  <div id="card-error" role="alert"></div>
+                  <div id="card-errors" role="alert"></div>
               </form>
             </div>
 
@@ -263,7 +257,3 @@ button:hover {
 </script>
 
 {% endblock extra_scripts %}
-
-
-
-

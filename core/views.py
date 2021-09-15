@@ -213,7 +213,7 @@ class PaymentView(View):
             context = {
                 'order': order,
                 'DISPLAY_COUPON_FORM': False,
-                'STRIPE_PUBLIC_KEY' : settings.STRIPE_PUBLIC_KEY
+                'STRIPE_PUBLIC_KEY': "sk_test_4eC39HqLyjWDarjtT1zdp7dc"
             }
             userprofile = self.request.user.userprofile
             if userprofile.one_click_purchasing:
