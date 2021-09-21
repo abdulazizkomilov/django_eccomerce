@@ -2,8 +2,8 @@
 
 {% block content %}
 
-  <main class="mt-5 pt-4">
-    <div class="container dark-grey-text mt-5">
+  <main class="pt-4">
+    <div class="container dark-grey-text">
 
       <!--Grid row-->
       <div class="row wow fadeIn">
@@ -22,9 +22,13 @@
           <!--Content-->
           <div class="p-4">
 
+            <div>
+              <h1><strong>{{ object.title }}</strong></h1>
+            </div>
+
             <div class="mb-3">
               <a href="">
-                <span class="badge purple mr-1">{{ object.get_category_display }}</span>
+                  <span class="badge purple mr-1">{{ object.get_category_display }}</span>
               </a>
             </div>
 
@@ -43,15 +47,42 @@
 
             <p>{{ object.description }}</p>
 
-            {% comment %} <form class="d-flex justify-content-left">
-              <!-- Default input -->
-              <input type="number" value="1" aria-label="Search" class="form-control" style="width: 100px">
-              <button class="btn btn-primary btn-md my-0 p" type="submit">
-                Add to cart
-                <i class="fas fa-shopping-cart ml-1"></i>
-              </button>
+            <section class="color">
+                <div class="mt-3 mb-3" style="text-align: left">
+                    <p>Choose your color</p>
+                    <div class="ml-2">
+                        <div class="col-md-4 col-12">
+                            <div>
+                              <input id="radio100" name="radio" value="Red" type="radio" class="custom-control-input" required>
+                              <label class="custom-control-label" for="radio100">Red</label>
+                            </div>
+                            <div>
+                              <input id="radio101" name="radio" value="Blue" type="radio" class="custom-control-input" required>
+                              <label class="custom-control-label" for="radio101">Blue</label>
+                            </div>
+                            <div>
+                              <input id="radio102" name="radio" value="Yellow" type="radio" class="custom-control-input" required>
+                              <label class="custom-control-label" for="radio102">Yellow</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-4 mb-5" style="text-align: right">
+                    <p>Choose your size</p>
+                    <select name="cup">
+                        <option value="XS">XS</option>
+                        <option value="S">S</option>
+                        <option value="M">M</option>
+                        <option value="L">L</option>
+                        <option value="XXL">XXL</option>
+                        <option value="XXXL">XXXL</option>
+                    </select>
+                </div>
+            </section>
 
-            </form> {% endcomment %}
+            <section class="text-right">
+            </section>
+
             <a href="{{ object.get_add_to_cart_url }}" class="btn btn-primary btn-md my-0 p">
               Add to cart
               <i class="fas fa-shopping-cart ml-1"></i>
