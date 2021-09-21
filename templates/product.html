@@ -48,7 +48,7 @@
             <p>{{ object.description }}</p>
 
             <section class="color">
-                <div class="mt-3 mb-3" style="text-align: left">
+                <div class="mt-3 mb-3">
                     <p>Choose your color</p>
                     <div class="ml-2">
                         <div class="col-md-4 col-12">
@@ -67,7 +67,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="mt-4 mb-5" style="text-align: right">
+            </section>
+
+            <section>
+                <div class="mt-4 mb-5">
                     <p>Choose your size</p>
                     <select name="cup">
                         <option value="XS">XS</option>
@@ -78,9 +81,6 @@
                         <option value="XXXL">XXXL</option>
                     </select>
                 </div>
-            </section>
-
-            <section class="text-right">
             </section>
 
             <a href="{{ object.get_add_to_cart_url }}" class="btn btn-primary btn-md my-0 p">
