@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../Teachebel M/.idea/Teachebel M.iml" filepath="$PROJECT_DIR$/../Teachebel M/.idea/Teachebel M.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/web_site.iml" filepath="$PROJECT_DIR$/.idea/web_site.iml" />
     </modules>
   </component>
