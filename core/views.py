@@ -15,8 +15,12 @@ from django.views.generic import ListView, DetailView, View
 from .forms import CheckoutForm, CouponForm, RefundForm, PaymentForm
 from .models import Item, OrderItem, Order, Address, Payment, Coupon, Refund, UserProfile
 
-stripe.api_key = "sk_test_4eC39HqLyjWDarjtT1zdp7dc"
-
+stripe.api_key = "sk_test_51JpTHcIqbdLYLXAJ7Ucymb0RZRQWyXZIkG7PzY1hZjqEzkm9bW43H3n5qZXfm6vU2Dpi7bw6gSElzPNkBGG9u0L700Bs1W773P"
+api_key="sk_test_51JpTHcIqbdLYLXAJ7Ucymb0RZRQWyXZIkG7PzY1hZjqEzkm9bW43H3n5qZXfm6vU2Dpi7bw6gSElzPNkBGG9u0L700Bs1W773P"
+# charge = stripe.Charge.retrieve(
+#   api_key="sk_test_51JpTHcIqbdLYLXAJ7Ucymb0RZRQWyXZIkG7PzY1hZjqEzkm9bW43H3n5qZXfm6vU2Dpi7bw6gSElzPNkBGG9u0L700Bs1W773P"
+# )
+# charge.save()
 
 def create_ref_code():
     return ''.join(random.choices(string.ascii_lowercase + string.digits, k=20))
@@ -213,7 +217,7 @@ class PaymentView(View):
             context = {
                 'order': order,
                 'DISPLAY_COUPON_FORM': False,
-                'STRIPE_PUBLIC_KEY': "sk_test_4eC39HqLyjWDarjtT1zdp7dc"
+                'STRIPE_PUBLIC_KEY': "sk_test_51JpTHcIqbdLYLXAJ7Ucymb0RZRQWyXZIkG7PzY1hZjqEzkm9bW43H3n5qZXfm6vU2Dpi7bw6gSElzPNkBGG9u0L700Bs1W773P"
             }
             userprofile = self.request.user.userprofile
             if userprofile.one_click_purchasing:
