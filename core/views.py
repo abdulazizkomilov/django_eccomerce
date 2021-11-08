@@ -14,7 +14,7 @@ from django.views.generic import ListView, DetailView, View
 
 from .forms import CheckoutForm, CouponForm, RefundForm, PaymentForm
 from .models import Item, OrderItem, Order, Address, Payment, Coupon, Refund, UserProfile
-
+ 
 stripe.api_key = "sk_test_51JpTHcIqbdLYLXAJ7Ucymb0RZRQWyXZIkG7PzY1hZjqEzkm9bW43H3n5qZXfm6vU2Dpi7bw6gSElzPNkBGG9u0L700Bs1W773P"
 api_key="sk_test_51JpTHcIqbdLYLXAJ7Ucymb0RZRQWyXZIkG7PzY1hZjqEzkm9bW43H3n5qZXfm6vU2Dpi7bw6gSElzPNkBGG9u0L700Bs1W773P"
 # charge = stripe.Charge.retrieve(

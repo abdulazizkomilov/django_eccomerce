@@ -1,6 +1,10 @@
 /* Required height of parents of the Half Page Carousel for proper displaying carousel itself */
 html,
 body,
+
+/*.body {*/
+/*  box-sizing: border-box;*/
+/*}*/
 .view {
   height: 100%; }
 
