@@ -1,13 +1,13 @@
 {% load cart_template_tags %}
 
 <!-- Navbar -->
-<nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
+<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light white scrolling-navbar">
     <div class="container">
 
 
       <!-- Collapse -->
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        aria-controls="navbarSupportedContent" aria-expanded="true" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
@@ -15,28 +15,10 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
         <!-- Left -->
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active rounded-pill">
-            <a class="nav-link waves-effect" href="/">Home
-              <span class="sr-only">(current)</span>
-            </a>
-          </li>
-          <li class="nav-item red ml-2 rounded-pill">
-            <a class="nav-link waves-effect" style="color: white">Supreme</a>
-          </li>
-          <li class="nav-item yellow ml-2 rounded-pill">
-            <a class="nav-link waves-effect" style="color: #8f4800">GUCCI</a>
-          </li>
-          <li class="nav-item grey ml-2 rounded-pill">
-            <a class="nav-link waves-effect" style="color: #ffcf4d">LOUIS VUITTON</a>
-          </li>
-          <li class="nav-item black ml-2 rounded-pill">
-            <a class="nav-link waves-effect" style="color: white">adidas</a>
-          </li>
-          <li class="nav-item pink ml-2 rounded-pill">
-            <a class="nav-link waves-effect" style="color: white">LANCOME</a>
-          </li>
-        </ul>
+        <a class="nav-link" style="color: black" href="/">Home</a>
+        <a class="nav-link" style="color: black" href="/">Home</a>
+        <a class="nav-link" style="color: black" href="/">Home</a>
+
 
         <ul class="navbar-nav nav-flex-icons">
           {% if request.user.is_authenticated %}
