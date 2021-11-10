@@ -1,27 +1,133 @@
 {% load cart_template_tags %}
+<style>
+    nav{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        min-height: 8vh;
+        background-color: #929fba;
+    }
+    .logo{
+        color: white;
+        text-transform: uppercase;
+        letter-spacing: 5px;
+        font-size: 20px;
+        font-family: 'Poppins', sans-serif;
+    }
+    .nav-links{
+        display: flex;
+        justify-content: space-around;
+        width: 30%;
+        align-items: center;
+        font-family: 'Source Serif Pro', serif;
+        margin-top: 12px;
+    }
+    .nav-links li{
+        list-style: none;
+    }
+    .nav-links a{
+        color: black;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 14px;
+    }
+    .burger{
+        display: none;
+    }
+    .burger div{
+        width: 25px;
+        height: 3px;
+        background-color: white;
+        margin: 5px;
+    }
 
+    @media screen and (max-width: 1024px){
+        body{
+
+        }
+        .nav-links{
+            position: absolute;
+            right: 0px;
+            height: 40vh;
+            top: 5vh;
+            background-color: #929fba;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 30%;
+            transform: translateX(100%);
+        }
+    }
+</style>
 <!-- Navbar -->
-<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light white scrolling-navbar">
-    <div class="container">
-
-
-      <!-- Collapse -->
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="true" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <!-- Links -->
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-        <!-- Left -->
-        <a class="nav-link" style="color: black" href="/">Home</a>
-        <a class="nav-link" style="color: black" href="/">Home</a>
-        <a class="nav-link" style="color: black" href="/">Home</a>
-
-
-        <ul class="navbar-nav nav-flex-icons">
-          {% if request.user.is_authenticated %}
+<nav>
+    <div class="logo">
+        <h4>Online Shop</h4>
+    </div>
+    <ul class="nav-links">
+        <li>
+            <a class="nav-link" href="/">Women</a>
+{#            <ul class="dropdown">#}
+{#                <li><a href="#">1</a></li>#}
+{#                <li><a href="#">2</a></li>#}
+{#                <li><a href="#">2</a></li>#}
+{#                <li><a href="#">2</a></li>#}
+{#                <li><a href="#">3</a></li>#}
+{#                <li><a href="#">4</a></li>#}
+{#            </ul>#}
+        </li>
+        <li>
+            <a class="nav-link" href="/">Men</a>
+{#            <ul  class="dropdown">#}
+{#                <li><a href="#">5</a></li>#}
+{#                <li><a href="#">6</a></li>#}
+{#                <li><a href="#">7</a></li>#}
+{#                <li><a href="#">8</a></li>#}
+{#            </ul>#}
+        </li>
+        <li>
+            <a class="nav-link" href="/">Trainers</a>
+{#            <ul class="dropdown">#}
+{#                <li><a href="#">9</a></li>#}
+{#                <li><a href="#">10</a></li>#}
+{#                <li><a href="#">11</a></li>#}
+{#                <li><a href="#">12</a></li>#}
+{#                <li><a href="#">12</a></li>#}
+{#            </ul>#}
+        </li>
+        <li>
+            <a class="nav-link" href="/">Kids</a>
+{#            <ul class="dropdown">#}
+{#                <li><a href="#">1</a></li>#}
+{#                <li><a href="#">2</a></li>#}
+{#                <li><a href="#">3</a></li>#}
+{#                <li><a href="#">3</a></li>#}
+{#                <li><a href="#">3</a></li>#}
+{#                <li><a href="#">3</a></li>#}
+{#                <li><a href="#">4</a></li>#}
+{#            </ul>#}
+        </li>
+        <li>
+            <a class="nav-link" href="/">Brands</a>
+{#            <ul class="dropdown">#}
+{#                <li><a href="#">1</a></li>#}
+{#                <li><a href="#">2</a></li>#}
+{#                <li><a href="#">3</a></li>#}
+{#                <li><a href="#">4</a></li>#}
+{#            </ul>#}
+        </li>
+        <li>
+            <a class="nav-link" href="/">Accessories</a>
+{#            <ul class="dropdown">#}
+{#                <li><a href="#">1</a></li>#}
+{#                <li><a href="#">2</a></li>#}
+{#                <li><a href="#">3</a></li>#}
+{#                <li><a href="#">4</a></li>#}
+{#            </ul>#}
+        </li>
+    </ul>
+    <ul class="nav-links">
+        {% if request.user.is_authenticated %}
           <li class="nav-item">
             <a href="{% url 'core:order-summary' %}" class="nav-link waves-effect">
               <span class="badge red z-depth-1 mr-1"> {{ request.user|cart_item_count }} </span>
@@ -61,9 +167,10 @@
               <i class="fab fa-facebook-f"></i>
             </a>
           </li>
-        </ul>
-
-      </div>
+    </ul>
+    <div class="burger">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
     </div>
 </nav>
-<!-- Navbar -->
