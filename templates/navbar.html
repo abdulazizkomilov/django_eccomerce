@@ -33,22 +33,24 @@
     }
     .burger{
         display: none;
+        cursor: pointer;
     }
     .burger div{
-        width: 25px;
-        height: 3px;
+        width: 20px;
+        height: 2px;
         background-color: white;
         margin: 5px;
+        transition: all 0.3s ease;
     }
 
     @media screen and (max-width: 1024px){
         body{
-
+            overflow-x: hidden;
         }
         .nav-links{
             position: absolute;
             right: 0px;
-            height: 40vh;
+            height: 92vh;
             top: 5vh;
             background-color: #929fba;
             display: flex;
@@ -56,8 +58,39 @@
             align-items: center;
             width: 30%;
             transform: translateX(100%);
+            transition: transform 0.5s ease-in;
+        }
+        .nav-links li{
+            opacity: 0;
+        }
+        .burger{
+            display: block;
         }
     }
+    .nav-active{
+        transform: translateX(0%);
+    }
+
+    @keyframes navLinkFade{
+        from{
+            opacity: 0;
+            transform: translateX(50px);
+        }
+        to{
+            opacity: 1;
+            transform: translateX(0px);
+        }
+    }
+    .toggle .line1{
+        transform: rotate(-45deg) translate(-5px,6px);
+    }
+    .toggle .line2{
+        opacity: 0;
+    }
+    .toggle .line3{
+        transform: rotate(45deg) translate(-5px,-6px);
+    }
+
 </style>
 <!-- Navbar -->
 <nav>
@@ -107,24 +140,6 @@
 {#                <li><a href="#">4</a></li>#}
 {#            </ul>#}
         </li>
-        <li>
-            <a class="nav-link" href="/">Brands</a>
-{#            <ul class="dropdown">#}
-{#                <li><a href="#">1</a></li>#}
-{#                <li><a href="#">2</a></li>#}
-{#                <li><a href="#">3</a></li>#}
-{#                <li><a href="#">4</a></li>#}
-{#            </ul>#}
-        </li>
-        <li>
-            <a class="nav-link" href="/">Accessories</a>
-{#            <ul class="dropdown">#}
-{#                <li><a href="#">1</a></li>#}
-{#                <li><a href="#">2</a></li>#}
-{#                <li><a href="#">3</a></li>#}
-{#                <li><a href="#">4</a></li>#}
-{#            </ul>#}
-        </li>
     </ul>
     <ul class="nav-links">
         {% if request.user.is_authenticated %}
@@ -152,21 +167,6 @@
             </a>
           </li>
           {% endif %}
-          <li class="nav-item" style="margin-left: 25px">
-            <a href="#" class="nav-link waves-effect">
-              <i class="fab fa-instagram"></i>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link waves-effect">
-              <i class="fab fa-twitter"></i>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link waves-effect">
-              <i class="fab fa-facebook-f"></i>
-            </a>
-          </li>
     </ul>
     <div class="burger">
         <div class="line1"></div>
@@ -174,3 +174,30 @@
         <div class="line3"></div>
     </div>
 </nav>
+
+<script>
+    const navSlide = () => {
+        const burger = document.querySelector('.burger');
+        const nav = document.querySelector('.nav-links');
+        const navLinks = document.querySelectorAll('.nav-links li');
+
+        burger.addEventListener('click', () => {
+            //toggle nav
+            nav.classList.toggle('nav-active');
+
+            //animate links
+            navLinks.forEach((link, index) => {
+                if (link.style.animation) {
+                    link.style.animation = '';
+                } else {
+                    link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.5}s`;
+                }
+            });
+            //burger animate
+            burger.classList.toggle('toggle');
+        });
+
+    }
+
+    navSlide();
+</script>
