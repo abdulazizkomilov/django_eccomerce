@@ -1,11 +1,19 @@
 {% load cart_template_tags %}
 <style>
+    body{
+        {#background-image: url("/media/oo.png");#}
+        background-color: #a18cd1;
+        {#background-position: center;#}
+        {#background-size: cover;#}
+        {#background-repeat: no-repeat;#}
+        {#background-clip: padding-box;#}
+    }
     nav{
         display: flex;
         justify-content: space-around;
         align-items: center;
         min-height: 8vh;
-        background-color: lightskyblue;
+        {#background-color: #adb5bd;#}
     }
     .logo{
         color: white;
@@ -47,10 +55,12 @@
         list-style: none;
     }
     .nav-links a{
-        color: black;
+        color: #18ffff;
         text-decoration: none;
+        font-size: 10px;
         font-weight: bold;
-        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 5px;
     }
     .burger{
         display: none;
@@ -74,7 +84,7 @@
             z-index: 1;
             height: 92vh;
             top: 6vh;
-            background-color: lightskyblue;
+            {#background-color: #adb5bd;#}
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -117,10 +127,25 @@
         font-size: 18px;
     }
     .card img{
-        transition: all .10s ease;
+        transition: all .7s ease;
     }
     .card:hover img{
         transform: scale(1.1);
+    }
+    #img-container{
+        z-index: 1;
+        max-width: 500px;
+        position: absolute;
+    }
+    #lens{
+        z-index: 1;
+        position: absolute;
+        background-repeat: no-repeat;
+        cursor: none;
+        margin-bottom: 10px;
+        height: 300px;
+        width: 300px;
+        border: 1px  solid;
     }
 </style>
 <!-- Navbar -->
