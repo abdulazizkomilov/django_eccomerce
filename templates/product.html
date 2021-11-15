@@ -178,6 +178,23 @@
               let positionLeft = pos.x - (lens.offsetWidth / 2)
               let positionTop = pos.y - (lens.offsetHeight / 2)
 
+              //5
+              if(positionLeft < 0 ){
+                  positionLeft = 0
+              }
+
+              if(positionTop < 0 ){
+                  positionTop = 0
+              }
+
+              if(positionLeft > img.width - lens.offsetWidth / 3){
+                  positionLeft = img.width - lens.offsetWidth / 3
+              }
+
+              if(positionTop > img.height - lens.offsetHeight / 3){
+                  positionTop = img.height - lens.offsetHeight / 3
+              }
+
               //3
               lens.style.left = positionLeft +'px';
               lens.style.top = positionTop +'px';
@@ -196,6 +213,8 @@
 
               let x = e.pageX - bounds.left
               let y = e.pageX - bounds.top
+              x = x - window.pageXOffset;
+              y = y - window.pageYOffset;
 
               return {'x':x, 'y':y}
           }
