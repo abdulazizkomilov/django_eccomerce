@@ -17,10 +17,6 @@ from .models import Item, OrderItem, Order, Address, Payment, Coupon, Refund, Us
  
 stripe.api_key = "sk_test_51JpTHcIqbdLYLXAJ7Ucymb0RZRQWyXZIkG7PzY1hZjqEzkm9bW43H3n5qZXfm6vU2Dpi7bw6gSElzPNkBGG9u0L700Bs1W773P"
 api_key="sk_test_51JpTHcIqbdLYLXAJ7Ucymb0RZRQWyXZIkG7PzY1hZjqEzkm9bW43H3n5qZXfm6vU2Dpi7bw6gSElzPNkBGG9u0L700Bs1W773P"
-# charge = stripe.Charge.retrieve(
-#   api_key="sk_test_51JpTHcIqbdLYLXAJ7Ucymb0RZRQWyXZIkG7PzY1hZjqEzkm9bW43H3n5qZXfm6vU2Dpi7bw6gSElzPNkBGG9u0L700Bs1W773P"
-# )
-# charge.save()
 
 def create_ref_code():
     return ''.join(random.choices(string.ascii_lowercase + string.digits, k=20))
@@ -39,7 +35,6 @@ def is_valid_form(values):
         if field == '':
             valid = False
     return valid
-
 
 class CheckoutView(View):
     def get(self, *args, **kwargs):
