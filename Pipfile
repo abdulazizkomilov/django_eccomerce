@@ -10,7 +10,6 @@ django-crispy-forms = "==1.7.2"
 django-widget-tweaks = "*"
 stripe = "==2.27.0"
 django-allauth = "==0.39.1"
-pillow = "*"
 autopep8 = "==1.4.4"
 certifi = "==2019.3.9"
 chardet = "==3.0.4"
@@ -27,6 +26,7 @@ requests = "==2.21.0"
 requests-oauthlib = "==1.2.0"
 sqlparse = "==0.2.4"
 urllib3 = "==1.24.2"
+pillow = "*"
 
 [dev-packages]
 
